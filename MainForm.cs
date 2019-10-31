@@ -1,44 +1,26 @@
-﻿using System;
+﻿using Dapper;
+using System;
+using System.Data.SQLite;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
-using ThermalMate.Classes;
+using ThermoMate.Model;
+using ThermoMate.Utility;
 
-namespace ThermalMate
+namespace ThermoMate
 {
     public partial class MainForm : Form
     {
-        private readonly XmlHelper _xmlHelper;
-
         public MainForm()
         {
             InitializeComponent();
-
-            Utils.ReleaseResource("ThermalMate.Resource.ThermalMate.xml", "ThermalMate.xml");
-            Utils.ReleaseResource("ThermalMate.Resource.UEwasp.dll", "UEwasp.dll");
-
-            _xmlHelper = new XmlHelper(@"ThermalMate.xml");
-
-            LoadConfig();
+            LoadDefaultConfig();
         }
 
-        private void LoadConfig()
+        private void LoadDefaultConfig()
         {
-            chkTopMost.Checked = TopMost = Convert.ToBoolean(_xmlHelper.GetOnlyInnerText("//Config/TopMost"));
-
-            var mediums = _xmlHelper.GetElementNames("//Velocity/*").ToList();
-            var velocities = _xmlHelper.GetInnerTexts("//Velocity/*").ToList();
-            for (var i = 0; i < mediums.Count; i++)
-            {
-                lstVelocity.Items.Add(new ListViewItem(new[] { mediums[i], velocities[i] }));
-            }
-
-            // 读取项目名
-            cbxProject.DataSource = _xmlHelper.GetAttributeValues("//Project/@Name").ToList();
-            cbxProject.Text = _xmlHelper.GetOnlyInnerText("//Config/Project");
-            cbxSpecification.Text = _xmlHelper.GetOnlyInnerText("//Config/Specification");
-            cbxStandardName.Text = _xmlHelper.GetOnlyInnerText("//Config/StandardName");
+            var db = new SQLiteConnection("Data Source = ThermoMate.db");
+            var result = db.Query<DefaultConfig>("SELECT * FROM DefaultConfig WHERE Item='IsOnTop'");
         }
 
         #region 界面
@@ -233,12 +215,12 @@ namespace ThermalMate
 
         private void cbxProject_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // 读取项目包含的管道等级
-            cbxSpecification.Items.Clear();
-            cbxSpecification.ResetText();
-            var xPath = string.Format("//Project[@Name='{0}']/*", cbxProject.Text);
-            var specs = _xmlHelper.GetElementNames(xPath);
-            specs.ToList().ForEach(x => cbxSpecification.Items.Add(x));
+            //// 读取项目包含的管道等级
+            //cbxSpecification.Items.Clear();
+            //cbxSpecification.ResetText();
+            //var xPath = string.Format("//Project[@Name='{0}']/*", cbxProject.Text);
+            //var specs = _xmlHelper.GetElementNames(xPath);
+            //specs.ToList().ForEach(x => cbxSpecification.Items.Add(x));
         }
 
         private void ForMain_KeyDown(object sender, KeyEventArgs e)
@@ -442,83 +424,83 @@ namespace ThermalMate
 
         private void QueryPipeSpecification(object sender, EventArgs e)
         {
-            txtDo.Clear();
-            txtSCH.Clear();
-            txtThk.Clear();
-            txtDi.Clear();
-            txtMat.Clear();
+            //txtDo.Clear();
+            //txtSCH.Clear();
+            //txtThk.Clear();
+            //txtDi.Clear();
+            //txtMat.Clear();
 
-            var dn = cmbNominalDiameter.Text.Replace("(", "").Replace(")", "");
-            var standardName = cbxStandardName.Text;
+            //var dn = cmbNominalDiameter.Text.Replace("(", "").Replace(")", "");
+            //var standardName = cbxStandardName.Text;
 
-            try
-            {
-                // 获取外径
-                var xPath = string.Format("//Standard[@Name='{0}']/Pipe[@DN='{1}']/@DO", standardName, dn);
-                var Do = _xmlHelper.GetOnlyAttributeValue(xPath);
-                var dDo = double.Parse(Do);
-                txtDo.Text = Do;
+            //try
+            //{
+            //    // 获取外径
+            //    var xPath = string.Format("//Standard[@Name='{0}']/Pipe[@DN='{1}']/@DO", standardName, dn);
+            //    var Do = _xmlHelper.GetOnlyAttributeValue(xPath);
+            //    var dDo = double.Parse(Do);
+            //    txtDo.Text = Do;
 
-                // 获取壁厚
-                xPath = string.Format("//Project[@Name='{0}']/{1}/*[text()='{2}']/@THK",
-                    cbxProject.Text,
-                    cbxSpecification.Text,
-                    dn);
-                var thk = _xmlHelper.GetOnlyAttributeValue(xPath);
-                if (string.Empty == thk)
-                {
-                    MessageBox.Show(@"当前等级下不存在此管径", @"警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                txtSCH.Text = thk;
+            //    // 获取壁厚
+            //    xPath = string.Format("//Project[@Name='{0}']/{1}/*[text()='{2}']/@THK",
+            //        cbxProject.Text,
+            //        cbxSpecification.Text,
+            //        dn);
+            //    var thk = _xmlHelper.GetOnlyAttributeValue(xPath);
+            //    if (string.Empty == thk)
+            //    {
+            //        MessageBox.Show(@"当前等级下不存在此管径", @"警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        return;
+            //    }
+            //    txtSCH.Text = thk;
 
-                // 材质
-                xPath = string.Format("//Project[@Name='{0}']/{1}/*[text()='{2}']/@MATERIAL",
-                    cbxProject.Text,
-                    cbxSpecification.Text,
-                    dn);
-                txtMat.Text = _xmlHelper.GetOnlyAttributeValue(xPath);
+            //    // 材质
+            //    xPath = string.Format("//Project[@Name='{0}']/{1}/*[text()='{2}']/@MATERIAL",
+            //        cbxProject.Text,
+            //        cbxSpecification.Text,
+            //        dn);
+            //    txtMat.Text = _xmlHelper.GetOnlyAttributeValue(xPath);
 
-                if (thk.Contains("SCH"))
-                {
-                    var sch = thk.Replace("SCH", string.Empty);
+            //    if (thk.Contains("SCH"))
+            //    {
+            //        var sch = thk.Replace("SCH", string.Empty);
 
-                    // 壁厚
-                    xPath = string.Format("//Standard[@Name='{0}']/Pipe[@DN='{1}']/*[text()='{2}']/@THK", standardName, dn, sch);
-                    thk = _xmlHelper.GetOnlyAttributeValue(xPath);
+            //        // 壁厚
+            //        xPath = string.Format("//Standard[@Name='{0}']/Pipe[@DN='{1}']/*[text()='{2}']/@THK", standardName, dn, sch);
+            //        thk = _xmlHelper.GetOnlyAttributeValue(xPath);
 
-                    // 单重
-                    //xPath = string.Format("//Standard[@Name='{0}']/Pipe[@DN='{1}']/*[text()='{2}']/@PW", standardName, dn, sch);
-                    //var pw = _xmlHelper.GetOnlyAttributeValue(xPath);
-                }
-                var dThk = double.Parse(thk);
-                txtThk.Text = thk;
+            //        // 单重
+            //        //xPath = string.Format("//Standard[@Name='{0}']/Pipe[@DN='{1}']/*[text()='{2}']/@PW", standardName, dn, sch);
+            //        //var pw = _xmlHelper.GetOnlyAttributeValue(xPath);
+            //    }
+            //    var dThk = double.Parse(thk);
+            //    txtThk.Text = thk;
 
-                // 计算内径
-                if ("SHT3405-2012" == cbxStandardName.Text.Trim())
-                {
-                    var nDi = Convert.ToInt32(dDo - 2 * dThk);
-                    txtDi.Text = nDi + "";
-                }
-                else
-                {
-                    var dDi = Convert.ToDouble(dDo - 2 * dThk);
-                    txtDi.Text = dDi + "";
-                }
+            //    // 计算内径
+            //    if ("SHT3405-2012" == cbxStandardName.Text.Trim())
+            //    {
+            //        var nDi = Convert.ToInt32(dDo - 2 * dThk);
+            //        txtDi.Text = nDi + "";
+            //    }
+            //    else
+            //    {
+            //        var dDi = Convert.ToDouble(dDo - 2 * dThk);
+            //        txtDi.Text = dDi + "";
+            //    }
 
-                Clipboard.Clear();
-                Clipboard.SetData(DataFormats.Text, Do + "×" + thk);
-            }
-            catch (Exception ex)
-            {
-                // 清空编辑框
-                foreach (var ctl in groupBox2.Controls.OfType<TextBox>())
-                {
-                    (ctl).Clear();
-                }
-                //MessageBox.Show("查询失败", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show(ex.Message);
-            }
+            //    Clipboard.Clear();
+            //    Clipboard.SetData(DataFormats.Text, Do + "×" + thk);
+            //}
+            //catch (Exception ex)
+            //{
+            //    // 清空编辑框
+            //    foreach (var ctl in groupBox2.Controls.OfType<TextBox>())
+            //    {
+            //        (ctl).Clear();
+            //    }
+            //    //MessageBox.Show("查询失败", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    MessageBox.Show(ex.Message);
+            //}
 
         }
 
@@ -811,7 +793,7 @@ namespace ThermalMate
 
             txtHoleSize.Text = string.Empty;
             var xpath = string.Format("//BlotHole/{0}[@TYPE='{1}']", cbxBoltSpec.Text, cbxEquipmentType.Text);
-            txtHoleSize.Text = _xmlHelper.GetOnlyInnerText(xpath);
+            //txtHoleSize.Text = _xmlHelper.GetOnlyInnerText(xpath);
         }
 
         private void ConvertFlowRate(object sender, EventArgs e)

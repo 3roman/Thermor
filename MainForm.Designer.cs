@@ -1,4 +1,4 @@
-﻿namespace ThermalMate
+﻿namespace ThermoMate
 {
     partial class MainForm
     {
