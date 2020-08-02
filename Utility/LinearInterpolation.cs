@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 // ReSharper disable InconsistentNaming
 
-namespace ThermoMate.Utility
+namespace Thermor.Utility
 {
     /// <summary>
     /// 常见材料弹性模量

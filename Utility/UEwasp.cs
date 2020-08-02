@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace ThermoMate.Utility
+namespace Thermor.Utility
 {
     static class UEwasp
     {

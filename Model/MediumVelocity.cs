@@ -1,4 +1,4 @@
-﻿namespace ThermoMate.Model
+﻿namespace Thermor.Model
 {
     internal class MediumVelocity
     {

@@ -7,8 +7,8 @@
     <ProjectGuid>{97B34573-D2AB-41B3-A065-1686EDE58353}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ThermoMate</RootNamespace>
-    <AssemblyName>ThermoMate</AssemblyName>
+    <RootNamespace>Thermor</RootNamespace>
+    <AssemblyName>Thermor</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -38,7 +38,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>ThermoMate.ico</ApplicationIcon>
+    <ApplicationIcon>Thermor.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -100,7 +100,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ThermoMate.ico" />
+    <Content Include="Thermor.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

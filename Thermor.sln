@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThermoMate", "ThermoMate.csproj", "{97B34573-D2AB-41B3-A065-1686EDE58353}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thermor", "Thermor.csproj", "{97B34573-D2AB-41B3-A065-1686EDE58353}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

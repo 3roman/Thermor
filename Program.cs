@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using ThermoMate.Utility;
+using Thermor.Utility;
 
-namespace ThermoMate
+namespace Thermor
 {
     internal static class Program
     {
@@ -23,8 +23,7 @@ namespace ThermoMate
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var title = string.Format("XNote Ver{0}", Application.ProductVersion);
-            Application.Run(new MainForm { Text = title });
+            Application.Run(new MainForm());
 
         }
     }

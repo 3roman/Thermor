@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace ThermoMate.Utility
+namespace Thermor.Utility
 {
     public static class SingleInstance
     {
