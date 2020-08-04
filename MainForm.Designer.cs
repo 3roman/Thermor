@@ -1,4 +1,6 @@
-﻿namespace Thermor
+﻿using Thermor.Utility;
+
+namespace Thermor
 {
     partial class MainForm
     {
@@ -49,7 +51,7 @@
             this.txtDiameter2 = new System.Windows.Forms.TextBox();
             this.label55 = new System.Windows.Forms.Label();
             this.txtDiameter1 = new System.Windows.Forms.TextBox();
-            this.lstVelocity = new System.Windows.Forms.ListView();
+            this.lstMediumVelocity = new ListViewNF();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -70,6 +72,10 @@
             this.txtDiameter = new System.Windows.Forms.TextBox();
             this.tabPipeCharacteristic = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.txtPipeLength = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtInsulationVolume = new System.Windows.Forms.TextBox();
+            this.label96 = new System.Windows.Forms.Label();
             this.txtCorrosionAllowance = new System.Windows.Forms.TextBox();
             this.txtVerticalSpan = new System.Windows.Forms.TextBox();
             this.txtHorizontalSpan = new System.Windows.Forms.TextBox();
@@ -85,12 +91,10 @@
             this.label118 = new System.Windows.Forms.Label();
             this.label114 = new System.Windows.Forms.Label();
             this.label106 = new System.Windows.Forms.Label();
-            this.label96 = new System.Windows.Forms.Label();
             this.txtJacketArea = new System.Windows.Forms.TextBox();
             this.txtTestingLoad = new System.Windows.Forms.TextBox();
             this.txtPaintArea = new System.Windows.Forms.TextBox();
             this.txtOperatingLoad = new System.Windows.Forms.TextBox();
-            this.txtInsulationVolume = new System.Windows.Forms.TextBox();
             this.label105 = new System.Windows.Forms.Label();
             this.txtPipeThickness = new System.Windows.Forms.TextBox();
             this.txtOutDiameter = new System.Windows.Forms.TextBox();
@@ -175,8 +179,7 @@
             this.txtHoleSize = new System.Windows.Forms.TextBox();
             this.grpFlowConversion = new System.Windows.Forms.GroupBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtPipeLength = new System.Windows.Forms.TextBox();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabMain.SuspendLayout();
             this.tabPipeDiameter.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -294,7 +297,7 @@
             // tabPipeDiameter
             // 
             this.tabPipeDiameter.Controls.Add(this.groupBox6);
-            this.tabPipeDiameter.Controls.Add(this.lstVelocity);
+            this.tabPipeDiameter.Controls.Add(this.lstMediumVelocity);
             this.tabPipeDiameter.Controls.Add(this.groupBox2);
             this.tabPipeDiameter.Controls.Add(this.groupBox1);
             this.tabPipeDiameter.Location = new System.Drawing.Point(4, 22);
@@ -395,35 +398,36 @@
             this.txtDiameter1.TabIndex = 0;
             this.txtDiameter1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // lstVelocity
+            // lstMediumVelocity
             // 
-            this.lstVelocity.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstMediumVelocity.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
-            this.columnHeader2});
-            this.lstVelocity.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lstVelocity.FullRowSelect = true;
-            this.lstVelocity.GridLines = true;
-            this.lstVelocity.HideSelection = false;
-            this.lstVelocity.LabelWrap = false;
-            this.lstVelocity.Location = new System.Drawing.Point(168, 10);
-            this.lstVelocity.MultiSelect = false;
-            this.lstVelocity.Name = "lstVelocity";
-            this.lstVelocity.Size = new System.Drawing.Size(235, 410);
-            this.lstVelocity.TabIndex = 5;
-            this.lstVelocity.TabStop = false;
-            this.lstVelocity.UseCompatibleStateImageBehavior = false;
-            this.lstVelocity.View = System.Windows.Forms.View.Details;
+            this.columnHeader2,
+            this.columnHeader3});
+            this.lstMediumVelocity.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.lstMediumVelocity.FullRowSelect = true;
+            this.lstMediumVelocity.GridLines = true;
+            this.lstMediumVelocity.HideSelection = false;
+            this.lstMediumVelocity.LabelWrap = false;
+            this.lstMediumVelocity.Location = new System.Drawing.Point(168, 10);
+            this.lstMediumVelocity.MultiSelect = false;
+            this.lstMediumVelocity.Name = "lstMediumVelocity";
+            this.lstMediumVelocity.Size = new System.Drawing.Size(235, 410);
+            this.lstMediumVelocity.TabIndex = 5;
+            this.lstMediumVelocity.TabStop = false;
+            this.lstMediumVelocity.UseCompatibleStateImageBehavior = false;
+            this.lstMediumVelocity.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "物料";
-            this.columnHeader1.Width = 112;
+            this.columnHeader1.Width = 125;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "流速（m/s）";
+            this.columnHeader2.Text = "最小";
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader2.Width = 101;
+            this.columnHeader2.Width = 50;
             // 
             // groupBox2
             // 
@@ -644,6 +648,48 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "管道特性";
             // 
+            // txtPipeLength
+            // 
+            this.txtPipeLength.Font = new System.Drawing.Font("宋体", 9F);
+            this.txtPipeLength.ForeColor = System.Drawing.Color.Blue;
+            this.txtPipeLength.Location = new System.Drawing.Point(76, 96);
+            this.txtPipeLength.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtPipeLength.Name = "txtPipeLength";
+            this.txtPipeLength.Size = new System.Drawing.Size(96, 21);
+            this.txtPipeLength.TabIndex = 3;
+            this.txtPipeLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.txtPipeLength, "m");
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 100);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "管道长度";
+            // 
+            // txtInsulationVolume
+            // 
+            this.txtInsulationVolume.Font = new System.Drawing.Font("宋体", 9F);
+            this.txtInsulationVolume.Location = new System.Drawing.Point(76, 225);
+            this.txtInsulationVolume.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtInsulationVolume.Name = "txtInsulationVolume";
+            this.txtInsulationVolume.ReadOnly = true;
+            this.txtInsulationVolume.Size = new System.Drawing.Size(96, 21);
+            this.txtInsulationVolume.TabIndex = 10;
+            this.txtInsulationVolume.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.txtInsulationVolume, "m³");
+            // 
+            // label96
+            // 
+            this.label96.AutoSize = true;
+            this.label96.Location = new System.Drawing.Point(7, 230);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(53, 12);
+            this.label96.TabIndex = 12;
+            this.label96.Text = "绝热体积";
+            // 
             // txtCorrosionAllowance
             // 
             this.txtCorrosionAllowance.ForeColor = System.Drawing.Color.Brown;
@@ -804,15 +850,6 @@
             this.label106.TabIndex = 12;
             this.label106.Text = "涂漆面积";
             // 
-            // label96
-            // 
-            this.label96.AutoSize = true;
-            this.label96.Location = new System.Drawing.Point(7, 230);
-            this.label96.Name = "label96";
-            this.label96.Size = new System.Drawing.Size(53, 12);
-            this.label96.TabIndex = 12;
-            this.label96.Text = "绝热体积";
-            // 
             // txtJacketArea
             // 
             this.txtJacketArea.Font = new System.Drawing.Font("宋体", 9F);
@@ -860,18 +897,6 @@
             this.txtOperatingLoad.TabIndex = 11;
             this.txtOperatingLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTip1.SetToolTip(this.txtOperatingLoad, "kg");
-            // 
-            // txtInsulationVolume
-            // 
-            this.txtInsulationVolume.Font = new System.Drawing.Font("宋体", 9F);
-            this.txtInsulationVolume.Location = new System.Drawing.Point(76, 225);
-            this.txtInsulationVolume.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.txtInsulationVolume.Name = "txtInsulationVolume";
-            this.txtInsulationVolume.ReadOnly = true;
-            this.txtInsulationVolume.Size = new System.Drawing.Size(96, 21);
-            this.txtInsulationVolume.TabIndex = 10;
-            this.txtInsulationVolume.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTip1.SetToolTip(this.txtInsulationVolume, "m³");
             // 
             // label105
             // 
@@ -1820,26 +1845,10 @@
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ShowAlways = true;
             // 
-            // label4
+            // columnHeader3
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 100);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
-            this.label4.TabIndex = 36;
-            this.label4.Text = "管道长度";
-            // 
-            // txtPipeLength
-            // 
-            this.txtPipeLength.Font = new System.Drawing.Font("宋体", 9F);
-            this.txtPipeLength.ForeColor = System.Drawing.Color.Blue;
-            this.txtPipeLength.Location = new System.Drawing.Point(76, 96);
-            this.txtPipeLength.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.txtPipeLength.Name = "txtPipeLength";
-            this.txtPipeLength.Size = new System.Drawing.Size(96, 21);
-            this.txtPipeLength.TabIndex = 3;
-            this.txtPipeLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTip1.SetToolTip(this.txtPipeLength, "m");
+            this.columnHeader3.Text = "最大";
+            this.columnHeader3.Width = 50;
             // 
             // MainForm
             // 
@@ -1953,7 +1962,7 @@
         private System.Windows.Forms.TextBox txtHoleSize;
         private System.Windows.Forms.ComboBox cbxEquipmentType;
         private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.ListView lstVelocity;
+        private ListViewNF lstMediumVelocity;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.TabPage tabPipeCharacteristic;
@@ -2037,6 +2046,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPipeLength;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }
 

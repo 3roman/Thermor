@@ -40,11 +40,13 @@
   <PropertyGroup>
     <ApplicationIcon>Thermor.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
-    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SqlSugar, Version=5.0.0.15, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\sqlSugar.5.0.0.15\lib\SqlSugar.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -63,6 +65,9 @@
     <Compile Include="Model\DefaultConfig.cs" />
     <Compile Include="Model\MediumVelocity.cs" />
     <Compile Include="Utility\LinearInterpolation.cs" />
+    <Compile Include="Utility\ListViewNF.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Utility\SingleInstance.cs" />
     <Compile Include="Utility\UEwasp.cs" />
     <Compile Include="MainForm.cs">
@@ -102,7 +107,6 @@
   <ItemGroup>
     <Content Include="Thermor.ico" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

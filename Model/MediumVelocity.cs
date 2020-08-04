@@ -1,6 +1,6 @@
 ﻿namespace Thermor.Model
 {
-    internal class MediumVelocity
+    public class MediumVelocity
     {
         public string Medium { get; set; }
         public double? MinVelocity { get; set; }

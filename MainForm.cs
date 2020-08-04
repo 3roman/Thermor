@@ -1,6 +1,9 @@
-﻿using System;
+﻿using SqlSugar;
+using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
+using Thermor.Model;
 using Thermor.Utility;
 
 namespace Thermor
@@ -10,6 +13,27 @@ namespace Thermor
         public MainForm()
         {
             InitializeComponent();
+
+            CheckForIllegalCrossThreadCalls = false;  // 干掉检测,不再检测跨线程
+            new Thread(UpdateListView).Start();
+        }
+
+        void UpdateListView()
+        {
+            var db = new SqlSugarClient(new ConnectionConfig()
+            {
+                ConnectionString = "Data Source=Thermor.db",
+                DbType = DbType.Sqlite,
+                IsAutoCloseConnection = true
+            });
+            var velocities = db.Queryable<MediumVelocity>().ToList();
+            foreach (var velocity in velocities)
+            {
+                var item = new ListViewItem(velocity.Medium);
+                item.SubItems.Add(velocity.MinVelocity + string.Empty);
+                item.SubItems.Add(velocity.MaxVelocity + string.Empty);
+                lstMediumVelocity.Items.Add(item);
+            }
         }
 
         #region 界面
@@ -79,9 +103,9 @@ namespace Thermor
                 ResetControls(tabMain.SelectedTab);
                 e.Handled = true;
             }
-            else if (e.KeyCode == Keys.Escape && ActiveControl is TextBox)
+            else if (e.KeyCode == Keys.Escape && ActiveControl is TextBox box)
             {
-                ((TextBox)ActiveControl).Clear();
+                box.Clear();
                 e.Handled = true;
             }
 
@@ -244,11 +268,8 @@ namespace Thermor
             }
         }
         #endregion
-        private void QueryPipeSpecification(object sender, EventArgs e)
-        {
 
-        }
-
+        #region 蒸汽特性
         private void QuerySteamProperty(object sender, EventArgs e)
         {
             // 清空编辑框
@@ -347,7 +368,7 @@ namespace Thermor
             else if (string.Empty != txtTemperature.Text && string.Empty == txtPressure.Text)
             {
                 UEwasp.T2P(temperature, ref retValue, ref range);
-                txtPressure.Text = string.Format("（{0}）", Math.Round(retValue, 3)-0.1);
+                txtPressure.Text = string.Format("（{0}）", Math.Round(retValue, 3) - 0.1);
 
                 // 饱和汽
                 UEwasp.T2VG(temperature, ref retValue, ref range);
@@ -384,6 +405,11 @@ namespace Thermor
                 txtIsoIndex3.Text = Math.Round(retValue, 3) + string.Empty;
             }
         }
-
+        #endregion
+        private void QueryPipeSpecification(object sender, EventArgs e)
+        {
+            // TODO 查询管道等级表
+        }
     }
+
 }
