@@ -1,7 +1,6 @@
 ﻿using SqlSugar;
 using System;
 using System.Drawing;
-using System.Threading;
 using System.Windows.Forms;
 using Thermor.Model;
 using Thermor.Utility;
@@ -14,8 +13,7 @@ namespace Thermor
         {
             InitializeComponent();
 
-            CheckForIllegalCrossThreadCalls = false;  // 干掉检测,不再检测跨线程
-            new Thread(UpdateListView).Start();
+            UpdateListView();
         }
 
         void UpdateListView()
