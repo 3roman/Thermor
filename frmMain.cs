@@ -100,19 +100,20 @@ namespace Thermor
                 switch (tabMain.SelectedTab.Text)
                 {
                     case @"管径计算":
-                        CalculateVelocity1(null, null);
-                        CalculateVelocity2(null, null);
-                        CalculateEquivalentDiameter(null, null);
+                        CalculateVelocity1();
+                        CalculateVelocity2();
+                        CalculateEquivalentDiameter();
                         break;
                     case @"管道特性":
-                        QueryPipeSpecification(null, null);
-                        CalculatePipeCharacteristic(null, null);
+                        QueryPipeSpecification();
+                        CalculatePipeCharacteristic();
                         break;
                     case @"汽水性质":
-                        QuerySteamProperty(null, null);
+                        QuerySteamProperty();
                         break;
                     case @"杂项功能":
-                        ConvertFlowRate(null, null);
+                        ConvertFlowRate();
+                        OpenHole();
                         break;
                 }
             }
@@ -131,7 +132,7 @@ namespace Thermor
         #endregion
 
         #region 管径计算
-        private void CalculateVelocity1(object sender, EventArgs e)
+        private void CalculateVelocity1()
         {
             double.TryParse(txtFlowRate1.Text, out double flowRate);
             double.TryParse(txtDiameter.Text, out double diameter);
@@ -140,7 +141,7 @@ namespace Thermor
             var velocity = flowRate / (0.785 * diameter * diameter);
             txtVelocity1.Text = Math.Round(velocity, 1) + string.Empty;
         }
-        private void CalculateVelocity2(object sender, EventArgs e)
+        private void CalculateVelocity2()
         {
             double.TryParse(txtFlowRate2.Text, out double flowRate);
             double.TryParse(txtSectionHeight.Text, out double sectionHeight);
@@ -152,7 +153,7 @@ namespace Thermor
             txtVelocity2.Text = Math.Round(velocity, 1) + string.Empty;
         }
 
-        private void CalculateEquivalentDiameter(object sender, EventArgs e)
+        private void CalculateEquivalentDiameter()
         {
             double.TryParse(txtDiameter1.Text, out double diameter1);
             double.TryParse(txtDiameter2.Text, out double diameter2);
@@ -163,7 +164,7 @@ namespace Thermor
         #endregion
 
         #region 管道特性
-        private void CalculatePipeCharacteristic(object sender, EventArgs e)
+        private void CalculatePipeCharacteristic()
         {
             double.TryParse(txtOutDiameter.Text, out double outDiameter);
             double.TryParse(txtPipeThickness.Text, out double pipeThickness);
@@ -251,7 +252,7 @@ namespace Thermor
         #endregion
 
         #region 地脚螺栓孔
-        private void cbxBolt_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbxBolt_SelectedIndexChanged(object sender, EventArgs args)
         {
             if (string.IsNullOrEmpty(cbxBolt.Text))
             {
@@ -271,7 +272,7 @@ namespace Thermor
         #endregion
 
         #region 流量转换
-        private void ConvertFlowRate(object sender, EventArgs e)
+        private void ConvertFlowRate()
         {
             double.TryParse(txtOperatingPressure.Text, out double op);
             double.TryParse(txtOperatingTemperature.Text, out double ot);
@@ -294,7 +295,7 @@ namespace Thermor
         #endregion
 
         #region 蒸汽特性
-        private void QuerySteamProperty(object sender, EventArgs e)
+        private void QuerySteamProperty()
         {
             // 清空编辑框
             txtDensity1.Clear();
@@ -430,7 +431,19 @@ namespace Thermor
             }
         }
         #endregion
-        private void QueryPipeSpecification(object sender, EventArgs e)
+
+        #region 开孔大小
+        private void OpenHole()
+        {
+            int.TryParse(txtOutDiameter1.Text, out int outDiameter);
+            int.TryParse(txtInsulationThickness1.Text, out int insulationThickness1);
+            int.TryParse(txtClearSpacing.Text, out int clearSpacing);
+            int.TryParse(txtThermalDisplacement.Text, out int thermalDisplacement);
+            var holeSize = outDiameter + 2 * (insulationThickness1 + clearSpacing + thermalDisplacement);
+            txtHoleSize.Text = holeSize + string.Empty;
+        }
+        #endregion
+        private void QueryPipeSpecification()
         {
             // TODO 查询管道等级表
         }
