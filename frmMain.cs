@@ -7,15 +7,16 @@ using Thermor.Utility;
 
 namespace Thermor
 {
-    public partial class MainForm : Form
+    public partial class frmMain : Form
     {
-        public MainForm()
+        public frmMain()
         {
             InitializeComponent();
 
             UpdateListView();
         }
 
+        #region 界面
         void UpdateListView()
         {
             var db = new SqlSugarClient(new ConnectionConfig()
@@ -32,9 +33,10 @@ namespace Thermor
                 item.SubItems.Add(velocity.MaxVelocity + string.Empty);
                 lstMediumVelocity.Items.Add(item);
             }
+            var bolts = db.Queryable<BoltHole>().Select(s => s.Bolt).ToArray();
+            cbxBolt.Items.AddRange(bolts);
         }
 
-        #region 界面
         private static void ResetControls(Control container)
         {
             foreach (Control c in container.Controls)
@@ -72,7 +74,26 @@ namespace Thermor
             }
         }
 
-        private void ForMain_KeyDown(object sender, KeyEventArgs e)
+        private void tabMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (tabMain.SelectedTab.Text)
+            {
+                case @"管径计算":
+                    txtFlowRate1.Focus();
+                    break;
+                case @"管道特性":
+                    txtOutDiameter.Focus();
+                    break;
+                case @"汽水性质":
+                    txtPressure.Focus();
+                    break;
+                case @"杂项功能":
+                    txtOperatingPressure.Focus();
+                    break;
+            }
+        }
+
+        private void FrmMain_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -92,7 +113,6 @@ namespace Thermor
                         break;
                     case @"杂项功能":
                         ConvertFlowRate(null, null);
-                        QueryBoltHole(null, null);
                         break;
                 }
             }
@@ -120,7 +140,6 @@ namespace Thermor
             var velocity = flowRate / (0.785 * diameter * diameter);
             txtVelocity1.Text = Math.Round(velocity, 1) + string.Empty;
         }
-
         private void CalculateVelocity2(object sender, EventArgs e)
         {
             double.TryParse(txtFlowRate2.Text, out double flowRate);
@@ -232,15 +251,22 @@ namespace Thermor
         #endregion
 
         #region 地脚螺栓孔
-        private void QueryBoltHole(object sender, EventArgs e)
+        private void cbxBolt_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(cbxBoltSpec.Text) || string.IsNullOrEmpty(cbxEquipmentType.Text))
+            if (string.IsNullOrEmpty(cbxBolt.Text))
             {
+                txtBoltHole.Clear();
                 return;
             }
 
-            txtHoleSize.Text = string.Empty;
-            // TODO 螺栓孔大小
+            var db = new SqlSugarClient(new ConnectionConfig()
+            {
+                ConnectionString = "Data Source=Thermor.db",
+                DbType = DbType.Sqlite,
+                IsAutoCloseConnection = true
+            });
+            var boltHole = db.Queryable<BoltHole>().Where(x => x.Bolt == cbxBolt.Text).First();
+            txtBoltHole.Text = boltHole.Hole;
         }
         #endregion
 
@@ -409,5 +435,4 @@ namespace Thermor
             // TODO 查询管道等级表
         }
     }
-
 }

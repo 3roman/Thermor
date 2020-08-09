@@ -2,7 +2,7 @@
 
 namespace Thermor
 {
-    partial class MainForm
+    partial class frmMain
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -31,7 +31,7 @@ namespace Thermor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.rioOperatingCondition = new System.Windows.Forms.RadioButton();
             this.rioStandardCondition = new System.Windows.Forms.RadioButton();
             this.txtOperatingFlowRate = new System.Windows.Forms.TextBox();
@@ -51,6 +51,10 @@ namespace Thermor
             this.txtDiameter2 = new System.Windows.Forms.TextBox();
             this.label55 = new System.Windows.Forms.Label();
             this.txtDiameter1 = new System.Windows.Forms.TextBox();
+            this.lstMediumVelocity = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label88 = new System.Windows.Forms.Label();
             this.label87 = new System.Windows.Forms.Label();
@@ -168,18 +172,12 @@ namespace Thermor
             this.txtTemperature = new System.Windows.Forms.TextBox();
             this.tabMisc = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.cbxEquipmentType = new System.Windows.Forms.ComboBox();
-            this.cbxBoltSpec = new System.Windows.Forms.ComboBox();
+            this.cbxBolt = new System.Windows.Forms.ComboBox();
             this.label50 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
-            this.txtHoleSize = new System.Windows.Forms.TextBox();
+            this.txtBoltHole = new System.Windows.Forms.TextBox();
             this.grpFlowConversion = new System.Windows.Forms.GroupBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.lstMediumVelocity = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabMain.SuspendLayout();
             this.tabPipeDiameter.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -293,6 +291,7 @@ namespace Thermor
             this.tabMain.Size = new System.Drawing.Size(416, 452);
             this.tabMain.TabIndex = 0;
             this.tabMain.TabStop = false;
+            this.tabMain.SelectedIndexChanged += new System.EventHandler(this.tabMain_SelectedIndexChanged);
             // 
             // tabPipeDiameter
             // 
@@ -397,6 +396,43 @@ namespace Thermor
             this.txtDiameter1.Size = new System.Drawing.Size(85, 21);
             this.txtDiameter1.TabIndex = 0;
             this.txtDiameter1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lstMediumVelocity
+            // 
+            this.lstMediumVelocity.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.lstMediumVelocity.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.lstMediumVelocity.FullRowSelect = true;
+            this.lstMediumVelocity.GridLines = true;
+            this.lstMediumVelocity.HideSelection = false;
+            this.lstMediumVelocity.LabelWrap = false;
+            this.lstMediumVelocity.Location = new System.Drawing.Point(168, 10);
+            this.lstMediumVelocity.MultiSelect = false;
+            this.lstMediumVelocity.Name = "lstMediumVelocity";
+            this.lstMediumVelocity.Size = new System.Drawing.Size(235, 410);
+            this.lstMediumVelocity.TabIndex = 5;
+            this.lstMediumVelocity.TabStop = false;
+            this.lstMediumVelocity.UseCompatibleStateImageBehavior = false;
+            this.lstMediumVelocity.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "物料";
+            this.columnHeader1.Width = 105;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "最小";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader2.Width = 50;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "最大";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 50;
             // 
             // groupBox2
             // 
@@ -1062,7 +1098,6 @@ namespace Thermor
             this.cmbNominalDiameter.Name = "cmbNominalDiameter";
             this.cmbNominalDiameter.Size = new System.Drawing.Size(96, 20);
             this.cmbNominalDiameter.TabIndex = 3;
-            this.cmbNominalDiameter.Text = "100";
             // 
             // cbxStandardName
             // 
@@ -1705,71 +1740,36 @@ namespace Thermor
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.cbxEquipmentType);
-            this.groupBox8.Controls.Add(this.cbxBoltSpec);
+            this.groupBox8.Controls.Add(this.cbxBolt);
             this.groupBox8.Controls.Add(this.label50);
-            this.groupBox8.Controls.Add(this.label51);
             this.groupBox8.Controls.Add(this.label49);
-            this.groupBox8.Controls.Add(this.txtHoleSize);
+            this.groupBox8.Controls.Add(this.txtBoltHole);
             this.groupBox8.Location = new System.Drawing.Point(8, 173);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(208, 124);
+            this.groupBox8.Size = new System.Drawing.Size(208, 90);
             this.groupBox8.TabIndex = 1;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "地脚螺栓孔";
             // 
-            // cbxEquipmentType
+            // cbxBolt
             // 
-            this.cbxEquipmentType.ForeColor = System.Drawing.Color.Blue;
-            this.cbxEquipmentType.FormattingEnabled = true;
-            this.cbxEquipmentType.Items.AddRange(new object[] {
-            "不产生拉力的设备",
-            "产生拉力的设备",
-            "振动较大的设备",
-            "高耸的塔、容器"});
-            this.cbxEquipmentType.Location = new System.Drawing.Point(89, 55);
-            this.cbxEquipmentType.Name = "cbxEquipmentType";
-            this.cbxEquipmentType.Size = new System.Drawing.Size(109, 20);
-            this.cbxEquipmentType.TabIndex = 1;
-            this.cbxEquipmentType.Text = "不产生拉力的设备";
-            // 
-            // cbxBoltSpec
-            // 
-            this.cbxBoltSpec.ForeColor = System.Drawing.Color.Blue;
-            this.cbxBoltSpec.FormattingEnabled = true;
-            this.cbxBoltSpec.Items.AddRange(new object[] {
-            "M6",
-            "M8",
-            "M10",
-            "M12",
-            "M16",
-            "M20",
-            "M24",
-            "M30",
-            "M36",
-            "M42"});
-            this.cbxBoltSpec.Location = new System.Drawing.Point(89, 21);
-            this.cbxBoltSpec.Name = "cbxBoltSpec";
-            this.cbxBoltSpec.Size = new System.Drawing.Size(109, 20);
-            this.cbxBoltSpec.TabIndex = 0;
+            this.cbxBolt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxBolt.ForeColor = System.Drawing.Color.Blue;
+            this.cbxBolt.FormattingEnabled = true;
+            this.cbxBolt.Location = new System.Drawing.Point(89, 21);
+            this.cbxBolt.Name = "cbxBolt";
+            this.cbxBolt.Size = new System.Drawing.Size(109, 20);
+            this.cbxBolt.TabIndex = 0;
+            this.cbxBolt.SelectedIndexChanged += new System.EventHandler(this.cbxBolt_SelectedIndexChanged);
             // 
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(9, 93);
+            this.label50.Location = new System.Drawing.Point(9, 59);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(53, 12);
             this.label50.TabIndex = 0;
             this.label50.Text = "开孔规格";
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(9, 59);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(53, 12);
-            this.label51.TabIndex = 0;
-            this.label51.Text = "设备类型";
             // 
             // label49
             // 
@@ -1780,15 +1780,14 @@ namespace Thermor
             this.label49.TabIndex = 0;
             this.label49.Text = "螺栓规格";
             // 
-            // txtHoleSize
+            // txtBoltHole
             // 
-            this.txtHoleSize.Location = new System.Drawing.Point(89, 89);
-            this.txtHoleSize.Name = "txtHoleSize";
-            this.txtHoleSize.ReadOnly = true;
-            this.txtHoleSize.Size = new System.Drawing.Size(109, 21);
-            this.txtHoleSize.TabIndex = 2;
-            this.txtHoleSize.TabStop = false;
-            this.txtHoleSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoltHole.Location = new System.Drawing.Point(89, 55);
+            this.txtBoltHole.Name = "txtBoltHole";
+            this.txtBoltHole.ReadOnly = true;
+            this.txtBoltHole.Size = new System.Drawing.Size(109, 21);
+            this.txtBoltHole.TabIndex = 2;
+            this.txtBoltHole.TabStop = false;
             // 
             // grpFlowConversion
             // 
@@ -1814,44 +1813,7 @@ namespace Thermor
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ShowAlways = true;
             // 
-            // lstMediumVelocity
-            // 
-            this.lstMediumVelocity.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
-            this.lstMediumVelocity.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lstMediumVelocity.FullRowSelect = true;
-            this.lstMediumVelocity.GridLines = true;
-            this.lstMediumVelocity.HideSelection = false;
-            this.lstMediumVelocity.LabelWrap = false;
-            this.lstMediumVelocity.Location = new System.Drawing.Point(168, 10);
-            this.lstMediumVelocity.MultiSelect = false;
-            this.lstMediumVelocity.Name = "lstMediumVelocity";
-            this.lstMediumVelocity.Size = new System.Drawing.Size(235, 410);
-            this.lstMediumVelocity.TabIndex = 5;
-            this.lstMediumVelocity.TabStop = false;
-            this.lstMediumVelocity.UseCompatibleStateImageBehavior = false;
-            this.lstMediumVelocity.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "物料";
-            this.columnHeader1.Width = 105;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "最小";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader2.Width = 50;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "最大";
-            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader3.Width = 50;
-            // 
-            // MainForm
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1862,11 +1824,11 @@ namespace Thermor
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MainForm";
+            this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Thermor 20200802";
+            this.Text = "Thermor 20200809";
             this.TopMost = true;
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ForMain_KeyDown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmMain_KeyDown);
             this.tabMain.ResumeLayout(false);
             this.tabPipeDiameter.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -1957,12 +1919,10 @@ namespace Thermor
         private System.Windows.Forms.TextBox txtIsoIndex1;
         private System.Windows.Forms.GroupBox grpFlowConversion;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.ComboBox cbxBoltSpec;
+        private System.Windows.Forms.ComboBox cbxBolt;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.TextBox txtHoleSize;
-        private System.Windows.Forms.ComboBox cbxEquipmentType;
-        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.TextBox txtBoltHole;
         private System.Windows.Forms.ListView lstMediumVelocity;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
