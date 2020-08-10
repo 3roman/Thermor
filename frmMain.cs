@@ -7,9 +7,9 @@ using Thermor.Utility;
 
 namespace Thermor
 {
-    public partial class frmMain : Form
+    public partial class FrmMain : Form
     {
-        public frmMain()
+        public FrmMain()
         {
             InitializeComponent();
 
@@ -54,7 +54,7 @@ namespace Thermor
             }
         }
 
-        private void rioCondition_CheckedChanged(object sender, EventArgs e)
+        private void RioCondition_CheckedChanged(object sender, EventArgs e)
         {
             if (rioStandardCondition.Checked)
             {
@@ -74,7 +74,7 @@ namespace Thermor
             }
         }
 
-        private void tabMain_SelectedIndexChanged(object sender, EventArgs e)
+        private void TabMain_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabMain.SelectedTab.Text)
             {
@@ -233,7 +233,7 @@ namespace Thermor
             // 计算跨距
             var span = 0.039 * Math.Pow(moment * modulus / calculatedLoad, 0.25);
 
-            txtHorizontalSpan.Text = Math.Round(span, 1) + string.Empty;
+            txtSupportSpan.Text = Math.Round(span, 1) + string.Empty;
             txtJacketArea.Text = Math.Round(jackerArea, 1) + string.Empty;
             txtPaintArea.Text = Math.Round(paintArea, 1) + string.Empty;
             txtInsulationVolume.Text = Math.Round(insulationVolume, 1) + string.Empty;
@@ -241,8 +241,7 @@ namespace Thermor
             txtOperatingLoad.Text = Math.Round(operatingLoad, 1) + string.Empty;
             if (txtDesignTemperature.Text == string.Empty || modulus <= 0)
             {
-                txtHorizontalSpan.Clear();
-                txtHorizontalSpan.Clear();
+                txtSupportSpan.Clear();
             }
             if (materialDensity <= 1)
             {
@@ -353,7 +352,7 @@ namespace Thermor
             {
                 // 沸点
                 UEwasp.P2T(pressure, ref retValue, ref range);
-                txtTemperature.Text = string.Format("（{0}）", Math.Round(retValue, 1));
+                txtTemperature.Text = string.Format(@"（{0}）", Math.Round(retValue, 1));
 
                 // 饱和汽
                 UEwasp.P2VG(pressure, ref retValue, ref range);
@@ -393,7 +392,7 @@ namespace Thermor
             else if (string.Empty != txtTemperature.Text && string.Empty == txtPressure.Text)
             {
                 UEwasp.T2P(temperature, ref retValue, ref range);
-                txtPressure.Text = string.Format("（{0}）", Math.Round(retValue, 3) - 0.1);
+                txtPressure.Text = string.Format(@"（{0}）", Math.Round(retValue, 3) - 0.1);
 
                 // 饱和汽
                 UEwasp.T2VG(temperature, ref retValue, ref range);

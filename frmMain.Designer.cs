@@ -2,7 +2,7 @@
 
 namespace Thermor
 {
-    partial class frmMain
+    partial class FrmMain
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -31,7 +31,7 @@ namespace Thermor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.rioOperatingCondition = new System.Windows.Forms.RadioButton();
             this.rioStandardCondition = new System.Windows.Forms.RadioButton();
             this.txtOperatingFlowRate = new System.Windows.Forms.TextBox();
@@ -78,12 +78,8 @@ namespace Thermor
             this.txtInsulationVolume = new System.Windows.Forms.TextBox();
             this.label96 = new System.Windows.Forms.Label();
             this.txtCorrosionAllowance = new System.Windows.Forms.TextBox();
-            this.txtVerticalSpan = new System.Windows.Forms.TextBox();
-            this.txtHorizontalSpan = new System.Windows.Forms.TextBox();
             this.cbxPipeMaterial = new System.Windows.Forms.ComboBox();
             this.label73 = new System.Windows.Forms.Label();
-            this.label122 = new System.Windows.Forms.Label();
-            this.label121 = new System.Windows.Forms.Label();
             this.txtDesignTemperature = new System.Windows.Forms.TextBox();
             this.txtInsulationThickness = new System.Windows.Forms.TextBox();
             this.txtMaterialDensity = new System.Windows.Forms.TextBox();
@@ -171,6 +167,17 @@ namespace Thermor
             this.txtMassFlow = new System.Windows.Forms.TextBox();
             this.txtTemperature = new System.Windows.Forms.TextBox();
             this.tabMisc = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtHoleSize = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtClearSpacing = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtThermalDisplacement = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtInsulationThickness1 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtOutDiameter1 = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.cbxBolt = new System.Windows.Forms.ComboBox();
             this.label50 = new System.Windows.Forms.Label();
@@ -178,17 +185,8 @@ namespace Thermor
             this.txtBoltHole = new System.Windows.Forms.TextBox();
             this.grpFlowConversion = new System.Windows.Forms.GroupBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtOutDiameter1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtInsulationThickness1 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtThermalDisplacement = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtClearSpacing = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtHoleSize = new System.Windows.Forms.TextBox();
+            this.label121 = new System.Windows.Forms.Label();
+            this.txtSupportSpan = new System.Windows.Forms.TextBox();
             this.tabMain.SuspendLayout();
             this.tabPipeDiameter.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -203,9 +201,9 @@ namespace Thermor
             this.grpSuperheatedSteam.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabMisc.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.grpFlowConversion.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // rioOperatingCondition
@@ -217,7 +215,7 @@ namespace Thermor
             this.rioOperatingCondition.TabIndex = 3;
             this.rioOperatingCondition.Text = "工况流量";
             this.rioOperatingCondition.UseVisualStyleBackColor = true;
-            this.rioOperatingCondition.CheckedChanged += new System.EventHandler(this.rioCondition_CheckedChanged);
+            this.rioOperatingCondition.CheckedChanged += new System.EventHandler(this.RioCondition_CheckedChanged);
             // 
             // rioStandardCondition
             // 
@@ -230,7 +228,7 @@ namespace Thermor
             this.rioStandardCondition.TabStop = true;
             this.rioStandardCondition.Text = "标况流量";
             this.rioStandardCondition.UseVisualStyleBackColor = true;
-            this.rioStandardCondition.CheckedChanged += new System.EventHandler(this.rioCondition_CheckedChanged);
+            this.rioStandardCondition.CheckedChanged += new System.EventHandler(this.RioCondition_CheckedChanged);
             // 
             // txtOperatingFlowRate
             // 
@@ -303,7 +301,7 @@ namespace Thermor
             this.tabMain.Size = new System.Drawing.Size(416, 452);
             this.tabMain.TabIndex = 0;
             this.tabMain.TabStop = false;
-            this.tabMain.SelectedIndexChanged += new System.EventHandler(this.tabMain_SelectedIndexChanged);
+            this.tabMain.SelectedIndexChanged += new System.EventHandler(this.TabMain_SelectedIndexChanged);
             // 
             // tabPipeDiameter
             // 
@@ -633,11 +631,9 @@ namespace Thermor
             this.groupBox10.Controls.Add(this.txtInsulationVolume);
             this.groupBox10.Controls.Add(this.label96);
             this.groupBox10.Controls.Add(this.txtCorrosionAllowance);
-            this.groupBox10.Controls.Add(this.txtVerticalSpan);
-            this.groupBox10.Controls.Add(this.txtHorizontalSpan);
+            this.groupBox10.Controls.Add(this.txtSupportSpan);
             this.groupBox10.Controls.Add(this.cbxPipeMaterial);
             this.groupBox10.Controls.Add(this.label73);
-            this.groupBox10.Controls.Add(this.label122);
             this.groupBox10.Controls.Add(this.label121);
             this.groupBox10.Controls.Add(this.txtDesignTemperature);
             this.groupBox10.Controls.Add(this.txtInsulationThickness);
@@ -669,7 +665,7 @@ namespace Thermor
             // 
             this.txtPipeLength.Font = new System.Drawing.Font("宋体", 9F);
             this.txtPipeLength.ForeColor = System.Drawing.Color.Blue;
-            this.txtPipeLength.Location = new System.Drawing.Point(76, 96);
+            this.txtPipeLength.Location = new System.Drawing.Point(76, 102);
             this.txtPipeLength.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtPipeLength.Name = "txtPipeLength";
             this.txtPipeLength.Size = new System.Drawing.Size(96, 21);
@@ -680,7 +676,7 @@ namespace Thermor
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 100);
+            this.label4.Location = new System.Drawing.Point(7, 106);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 36;
@@ -689,7 +685,7 @@ namespace Thermor
             // txtInsulationVolume
             // 
             this.txtInsulationVolume.Font = new System.Drawing.Font("宋体", 9F);
-            this.txtInsulationVolume.Location = new System.Drawing.Point(76, 225);
+            this.txtInsulationVolume.Location = new System.Drawing.Point(76, 242);
             this.txtInsulationVolume.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtInsulationVolume.Name = "txtInsulationVolume";
             this.txtInsulationVolume.ReadOnly = true;
@@ -701,7 +697,7 @@ namespace Thermor
             // label96
             // 
             this.label96.AutoSize = true;
-            this.label96.Location = new System.Drawing.Point(7, 230);
+            this.label96.Location = new System.Drawing.Point(7, 246);
             this.label96.Name = "label96";
             this.label96.Size = new System.Drawing.Size(53, 12);
             this.label96.TabIndex = 12;
@@ -710,37 +706,13 @@ namespace Thermor
             // txtCorrosionAllowance
             // 
             this.txtCorrosionAllowance.ForeColor = System.Drawing.Color.Brown;
-            this.txtCorrosionAllowance.Location = new System.Drawing.Point(76, 147);
+            this.txtCorrosionAllowance.Location = new System.Drawing.Point(76, 158);
             this.txtCorrosionAllowance.Name = "txtCorrosionAllowance";
             this.txtCorrosionAllowance.Size = new System.Drawing.Size(96, 21);
             this.txtCorrosionAllowance.TabIndex = 5;
             this.txtCorrosionAllowance.Text = "1.5";
             this.txtCorrosionAllowance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTip1.SetToolTip(this.txtCorrosionAllowance, "mm");
-            // 
-            // txtVerticalSpan
-            // 
-            this.txtVerticalSpan.Font = new System.Drawing.Font("宋体", 9F);
-            this.txtVerticalSpan.Location = new System.Drawing.Point(76, 381);
-            this.txtVerticalSpan.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.txtVerticalSpan.Name = "txtVerticalSpan";
-            this.txtVerticalSpan.ReadOnly = true;
-            this.txtVerticalSpan.Size = new System.Drawing.Size(96, 21);
-            this.txtVerticalSpan.TabIndex = 14;
-            this.txtVerticalSpan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTip1.SetToolTip(this.txtVerticalSpan, "m");
-            // 
-            // txtHorizontalSpan
-            // 
-            this.txtHorizontalSpan.Font = new System.Drawing.Font("宋体", 9F);
-            this.txtHorizontalSpan.Location = new System.Drawing.Point(76, 355);
-            this.txtHorizontalSpan.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.txtHorizontalSpan.Name = "txtHorizontalSpan";
-            this.txtHorizontalSpan.ReadOnly = true;
-            this.txtHorizontalSpan.Size = new System.Drawing.Size(96, 21);
-            this.txtHorizontalSpan.TabIndex = 13;
-            this.txtHorizontalSpan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTip1.SetToolTip(this.txtHorizontalSpan, "m");
             // 
             // cbxPipeMaterial
             // 
@@ -753,7 +725,7 @@ namespace Thermor
             "304(06Cr19Ni10)",
             "15CrMoG",
             "12Cr1MoVG"});
-            this.cbxPipeMaterial.Location = new System.Drawing.Point(76, 122);
+            this.cbxPipeMaterial.Location = new System.Drawing.Point(76, 130);
             this.cbxPipeMaterial.Name = "cbxPipeMaterial";
             this.cbxPipeMaterial.Size = new System.Drawing.Size(96, 20);
             this.cbxPipeMaterial.TabIndex = 4;
@@ -762,35 +734,17 @@ namespace Thermor
             // label73
             // 
             this.label73.AutoSize = true;
-            this.label73.Location = new System.Drawing.Point(7, 178);
+            this.label73.Location = new System.Drawing.Point(7, 190);
             this.label73.Name = "label73";
             this.label73.Size = new System.Drawing.Size(53, 12);
             this.label73.TabIndex = 12;
             this.label73.Text = "设计温度";
             // 
-            // label122
-            // 
-            this.label122.AutoSize = true;
-            this.label122.Location = new System.Drawing.Point(7, 386);
-            this.label122.Name = "label122";
-            this.label122.Size = new System.Drawing.Size(53, 12);
-            this.label122.TabIndex = 32;
-            this.label122.Text = "垂直跨距";
-            // 
-            // label121
-            // 
-            this.label121.AutoSize = true;
-            this.label121.Location = new System.Drawing.Point(7, 360);
-            this.label121.Name = "label121";
-            this.label121.Size = new System.Drawing.Size(53, 12);
-            this.label121.TabIndex = 31;
-            this.label121.Text = "水平跨距";
-            // 
             // txtDesignTemperature
             // 
             this.txtDesignTemperature.Font = new System.Drawing.Font("宋体", 9F);
-            this.txtDesignTemperature.ForeColor = System.Drawing.Color.Brown;
-            this.txtDesignTemperature.Location = new System.Drawing.Point(76, 173);
+            this.txtDesignTemperature.ForeColor = System.Drawing.Color.Blue;
+            this.txtDesignTemperature.Location = new System.Drawing.Point(76, 186);
             this.txtDesignTemperature.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtDesignTemperature.Name = "txtDesignTemperature";
             this.txtDesignTemperature.Size = new System.Drawing.Size(96, 21);
@@ -802,7 +756,7 @@ namespace Thermor
             // 
             this.txtInsulationThickness.Font = new System.Drawing.Font("宋体", 9F);
             this.txtInsulationThickness.ForeColor = System.Drawing.Color.Blue;
-            this.txtInsulationThickness.Location = new System.Drawing.Point(76, 70);
+            this.txtInsulationThickness.Location = new System.Drawing.Point(76, 74);
             this.txtInsulationThickness.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtInsulationThickness.Name = "txtInsulationThickness";
             this.txtInsulationThickness.Size = new System.Drawing.Size(96, 21);
@@ -813,8 +767,8 @@ namespace Thermor
             // txtMaterialDensity
             // 
             this.txtMaterialDensity.Font = new System.Drawing.Font("宋体", 9F);
-            this.txtMaterialDensity.ForeColor = System.Drawing.Color.Brown;
-            this.txtMaterialDensity.Location = new System.Drawing.Point(76, 199);
+            this.txtMaterialDensity.ForeColor = System.Drawing.Color.Blue;
+            this.txtMaterialDensity.Location = new System.Drawing.Point(76, 214);
             this.txtMaterialDensity.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtMaterialDensity.Name = "txtMaterialDensity";
             this.txtMaterialDensity.Size = new System.Drawing.Size(96, 21);
@@ -825,7 +779,7 @@ namespace Thermor
             // label108
             // 
             this.label108.AutoSize = true;
-            this.label108.Location = new System.Drawing.Point(7, 204);
+            this.label108.Location = new System.Drawing.Point(7, 218);
             this.label108.Name = "label108";
             this.label108.Size = new System.Drawing.Size(53, 12);
             this.label108.TabIndex = 12;
@@ -834,7 +788,7 @@ namespace Thermor
             // label120
             // 
             this.label120.AutoSize = true;
-            this.label120.Location = new System.Drawing.Point(7, 334);
+            this.label120.Location = new System.Drawing.Point(7, 358);
             this.label120.Name = "label120";
             this.label120.Size = new System.Drawing.Size(53, 12);
             this.label120.TabIndex = 12;
@@ -843,7 +797,7 @@ namespace Thermor
             // label118
             // 
             this.label118.AutoSize = true;
-            this.label118.Location = new System.Drawing.Point(7, 308);
+            this.label118.Location = new System.Drawing.Point(7, 330);
             this.label118.Name = "label118";
             this.label118.Size = new System.Drawing.Size(53, 12);
             this.label118.TabIndex = 12;
@@ -852,7 +806,7 @@ namespace Thermor
             // label114
             // 
             this.label114.AutoSize = true;
-            this.label114.Location = new System.Drawing.Point(7, 256);
+            this.label114.Location = new System.Drawing.Point(7, 274);
             this.label114.Name = "label114";
             this.label114.Size = new System.Drawing.Size(53, 12);
             this.label114.TabIndex = 12;
@@ -861,7 +815,7 @@ namespace Thermor
             // label106
             // 
             this.label106.AutoSize = true;
-            this.label106.Location = new System.Drawing.Point(7, 282);
+            this.label106.Location = new System.Drawing.Point(7, 302);
             this.label106.Name = "label106";
             this.label106.Size = new System.Drawing.Size(53, 12);
             this.label106.TabIndex = 12;
@@ -870,7 +824,7 @@ namespace Thermor
             // txtJacketArea
             // 
             this.txtJacketArea.Font = new System.Drawing.Font("宋体", 9F);
-            this.txtJacketArea.Location = new System.Drawing.Point(76, 251);
+            this.txtJacketArea.Location = new System.Drawing.Point(76, 270);
             this.txtJacketArea.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtJacketArea.Name = "txtJacketArea";
             this.txtJacketArea.ReadOnly = true;
@@ -882,7 +836,7 @@ namespace Thermor
             // txtTestingLoad
             // 
             this.txtTestingLoad.Font = new System.Drawing.Font("宋体", 9F);
-            this.txtTestingLoad.Location = new System.Drawing.Point(76, 329);
+            this.txtTestingLoad.Location = new System.Drawing.Point(76, 354);
             this.txtTestingLoad.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtTestingLoad.Name = "txtTestingLoad";
             this.txtTestingLoad.ReadOnly = true;
@@ -894,7 +848,7 @@ namespace Thermor
             // txtPaintArea
             // 
             this.txtPaintArea.Font = new System.Drawing.Font("宋体", 9F);
-            this.txtPaintArea.Location = new System.Drawing.Point(76, 277);
+            this.txtPaintArea.Location = new System.Drawing.Point(76, 298);
             this.txtPaintArea.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtPaintArea.Name = "txtPaintArea";
             this.txtPaintArea.ReadOnly = true;
@@ -906,7 +860,7 @@ namespace Thermor
             // txtOperatingLoad
             // 
             this.txtOperatingLoad.Font = new System.Drawing.Font("宋体", 9F);
-            this.txtOperatingLoad.Location = new System.Drawing.Point(76, 303);
+            this.txtOperatingLoad.Location = new System.Drawing.Point(76, 326);
             this.txtOperatingLoad.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtOperatingLoad.Name = "txtOperatingLoad";
             this.txtOperatingLoad.ReadOnly = true;
@@ -918,7 +872,7 @@ namespace Thermor
             // label105
             // 
             this.label105.AutoSize = true;
-            this.label105.Location = new System.Drawing.Point(7, 74);
+            this.label105.Location = new System.Drawing.Point(7, 78);
             this.label105.Name = "label105";
             this.label105.Size = new System.Drawing.Size(53, 12);
             this.label105.TabIndex = 12;
@@ -928,7 +882,7 @@ namespace Thermor
             // 
             this.txtPipeThickness.Font = new System.Drawing.Font("宋体", 9F);
             this.txtPipeThickness.ForeColor = System.Drawing.Color.Blue;
-            this.txtPipeThickness.Location = new System.Drawing.Point(76, 44);
+            this.txtPipeThickness.Location = new System.Drawing.Point(76, 46);
             this.txtPipeThickness.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtPipeThickness.Name = "txtPipeThickness";
             this.txtPipeThickness.Size = new System.Drawing.Size(96, 21);
@@ -951,7 +905,7 @@ namespace Thermor
             // label113
             // 
             this.label113.AutoSize = true;
-            this.label113.Location = new System.Drawing.Point(7, 152);
+            this.label113.Location = new System.Drawing.Point(7, 162);
             this.label113.Name = "label113";
             this.label113.Size = new System.Drawing.Size(53, 12);
             this.label113.TabIndex = 12;
@@ -960,7 +914,7 @@ namespace Thermor
             // label74
             // 
             this.label74.AutoSize = true;
-            this.label74.Location = new System.Drawing.Point(7, 126);
+            this.label74.Location = new System.Drawing.Point(7, 134);
             this.label74.Name = "label74";
             this.label74.Size = new System.Drawing.Size(53, 12);
             this.label74.TabIndex = 12;
@@ -978,7 +932,7 @@ namespace Thermor
             // label72
             // 
             this.label72.AutoSize = true;
-            this.label72.Location = new System.Drawing.Point(7, 48);
+            this.label72.Location = new System.Drawing.Point(7, 50);
             this.label72.Name = "label72";
             this.label72.Size = new System.Drawing.Size(53, 12);
             this.label72.TabIndex = 18;
@@ -1751,6 +1705,117 @@ namespace Thermor
             this.tabMisc.Text = "杂项功能";
             this.tabMisc.UseVisualStyleBackColor = true;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.txtHoleSize);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.txtClearSpacing);
+            this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Controls.Add(this.txtThermalDisplacement);
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.txtInsulationThickness1);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.txtOutDiameter1);
+            this.groupBox4.Location = new System.Drawing.Point(8, 252);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(196, 171);
+            this.groupBox4.TabIndex = 2;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "楼面及墙面开孔";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(9, 144);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 12);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "开孔大小";
+            // 
+            // txtHoleSize
+            // 
+            this.txtHoleSize.Location = new System.Drawing.Point(90, 140);
+            this.txtHoleSize.Name = "txtHoleSize";
+            this.txtHoleSize.ReadOnly = true;
+            this.txtHoleSize.Size = new System.Drawing.Size(95, 21);
+            this.txtHoleSize.TabIndex = 4;
+            this.txtHoleSize.TabStop = false;
+            this.txtHoleSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(9, 114);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 12);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "开孔净距";
+            // 
+            // txtClearSpacing
+            // 
+            this.txtClearSpacing.ForeColor = System.Drawing.Color.Brown;
+            this.txtClearSpacing.Location = new System.Drawing.Point(90, 110);
+            this.txtClearSpacing.Name = "txtClearSpacing";
+            this.txtClearSpacing.Size = new System.Drawing.Size(95, 21);
+            this.txtClearSpacing.TabIndex = 3;
+            this.txtClearSpacing.Text = "50";
+            this.txtClearSpacing.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 84);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "径向热位移";
+            // 
+            // txtThermalDisplacement
+            // 
+            this.txtThermalDisplacement.ForeColor = System.Drawing.Color.Blue;
+            this.txtThermalDisplacement.Location = new System.Drawing.Point(90, 80);
+            this.txtThermalDisplacement.Name = "txtThermalDisplacement";
+            this.txtThermalDisplacement.Size = new System.Drawing.Size(95, 21);
+            this.txtThermalDisplacement.TabIndex = 2;
+            this.txtThermalDisplacement.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 54);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "保温厚度";
+            // 
+            // txtInsulationThickness1
+            // 
+            this.txtInsulationThickness1.ForeColor = System.Drawing.Color.Blue;
+            this.txtInsulationThickness1.Location = new System.Drawing.Point(90, 50);
+            this.txtInsulationThickness1.Name = "txtInsulationThickness1";
+            this.txtInsulationThickness1.Size = new System.Drawing.Size(95, 21);
+            this.txtInsulationThickness1.TabIndex = 1;
+            this.txtInsulationThickness1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 12);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "管道外径";
+            // 
+            // txtOutDiameter1
+            // 
+            this.txtOutDiameter1.ForeColor = System.Drawing.Color.Blue;
+            this.txtOutDiameter1.Location = new System.Drawing.Point(89, 20);
+            this.txtOutDiameter1.Name = "txtOutDiameter1";
+            this.txtOutDiameter1.Size = new System.Drawing.Size(95, 21);
+            this.txtOutDiameter1.TabIndex = 0;
+            this.txtOutDiameter1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.cbxBolt);
@@ -1826,115 +1891,28 @@ namespace Thermor
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ShowAlways = true;
             // 
-            // groupBox4
+            // label121
             // 
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.txtHoleSize);
-            this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.txtClearSpacing);
-            this.groupBox4.Controls.Add(this.label7);
-            this.groupBox4.Controls.Add(this.txtThermalDisplacement);
-            this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Controls.Add(this.txtInsulationThickness1);
-            this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Controls.Add(this.txtOutDiameter1);
-            this.groupBox4.Location = new System.Drawing.Point(8, 252);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(196, 171);
-            this.groupBox4.TabIndex = 2;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "楼面及墙面开孔";
+            this.label121.AutoSize = true;
+            this.label121.Location = new System.Drawing.Point(7, 386);
+            this.label121.Name = "label121";
+            this.label121.Size = new System.Drawing.Size(53, 12);
+            this.label121.TabIndex = 31;
+            this.label121.Text = "管道跨距";
             // 
-            // label5
+            // txtSupportSpan
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 24);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 12);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "管道外径";
+            this.txtSupportSpan.Font = new System.Drawing.Font("宋体", 9F);
+            this.txtSupportSpan.Location = new System.Drawing.Point(76, 382);
+            this.txtSupportSpan.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtSupportSpan.Name = "txtSupportSpan";
+            this.txtSupportSpan.ReadOnly = true;
+            this.txtSupportSpan.Size = new System.Drawing.Size(96, 21);
+            this.txtSupportSpan.TabIndex = 13;
+            this.txtSupportSpan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.txtSupportSpan, "m");
             // 
-            // txtOutDiameter1
-            // 
-            this.txtOutDiameter1.Location = new System.Drawing.Point(89, 20);
-            this.txtOutDiameter1.Name = "txtOutDiameter1";
-            this.txtOutDiameter1.Size = new System.Drawing.Size(95, 21);
-            this.txtOutDiameter1.TabIndex = 0;
-            this.txtOutDiameter1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 54);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 12);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "保温厚度";
-            // 
-            // txtInsulationThickness1
-            // 
-            this.txtInsulationThickness1.Location = new System.Drawing.Point(90, 50);
-            this.txtInsulationThickness1.Name = "txtInsulationThickness1";
-            this.txtInsulationThickness1.Size = new System.Drawing.Size(95, 21);
-            this.txtInsulationThickness1.TabIndex = 1;
-            this.txtInsulationThickness1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 84);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 12);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "径向热位移";
-            // 
-            // txtThermalDisplacement
-            // 
-            this.txtThermalDisplacement.Location = new System.Drawing.Point(90, 80);
-            this.txtThermalDisplacement.Name = "txtThermalDisplacement";
-            this.txtThermalDisplacement.Size = new System.Drawing.Size(95, 21);
-            this.txtThermalDisplacement.TabIndex = 2;
-            this.txtThermalDisplacement.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 114);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 12);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "开孔净距";
-            // 
-            // txtClearSpacing
-            // 
-            this.txtClearSpacing.ForeColor = System.Drawing.Color.Brown;
-            this.txtClearSpacing.Location = new System.Drawing.Point(90, 110);
-            this.txtClearSpacing.Name = "txtClearSpacing";
-            this.txtClearSpacing.Size = new System.Drawing.Size(95, 21);
-            this.txtClearSpacing.TabIndex = 3;
-            this.txtClearSpacing.Text = "50";
-            this.txtClearSpacing.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 144);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(53, 12);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "开孔大小";
-            // 
-            // txtHoleSize
-            // 
-            this.txtHoleSize.Location = new System.Drawing.Point(90, 140);
-            this.txtHoleSize.Name = "txtHoleSize";
-            this.txtHoleSize.ReadOnly = true;
-            this.txtHoleSize.Size = new System.Drawing.Size(95, 21);
-            this.txtHoleSize.TabIndex = 4;
-            this.txtHoleSize.TabStop = false;
-            this.txtHoleSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // frmMain
+            // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1945,7 +1923,7 @@ namespace Thermor
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmMain";
+            this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thermor 20200809";
             this.TopMost = true;
@@ -1973,12 +1951,12 @@ namespace Thermor
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.tabMisc.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.grpFlowConversion.ResumeLayout(false);
             this.grpFlowConversion.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2119,10 +2097,6 @@ namespace Thermor
         private System.Windows.Forms.TextBox txtPaintArea;
         private System.Windows.Forms.Label label114;
         private System.Windows.Forms.TextBox txtJacketArea;
-        private System.Windows.Forms.TextBox txtVerticalSpan;
-        private System.Windows.Forms.TextBox txtHorizontalSpan;
-        private System.Windows.Forms.Label label122;
-        private System.Windows.Forms.Label label121;
         private System.Windows.Forms.TextBox txtCorrosionAllowance;
         private System.Windows.Forms.Label label113;
         private System.Windows.Forms.ToolTip toolTip1;
@@ -2142,6 +2116,8 @@ namespace Thermor
         private System.Windows.Forms.TextBox txtInsulationThickness1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtOutDiameter1;
+        private System.Windows.Forms.TextBox txtSupportSpan;
+        private System.Windows.Forms.Label label121;
     }
 }
 
