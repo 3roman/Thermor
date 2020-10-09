@@ -78,8 +78,10 @@ namespace Thermor
             this.txtInsulationVolume = new System.Windows.Forms.TextBox();
             this.label96 = new System.Windows.Forms.Label();
             this.txtCorrosionAllowance = new System.Windows.Forms.TextBox();
+            this.txtSupportSpan = new System.Windows.Forms.TextBox();
             this.cbxPipeMaterial = new System.Windows.Forms.ComboBox();
             this.label73 = new System.Windows.Forms.Label();
+            this.label121 = new System.Windows.Forms.Label();
             this.txtDesignTemperature = new System.Windows.Forms.TextBox();
             this.txtInsulationThickness = new System.Windows.Forms.TextBox();
             this.txtMaterialDensity = new System.Windows.Forms.TextBox();
@@ -185,8 +187,13 @@ namespace Thermor
             this.txtBoltHole = new System.Windows.Forms.TextBox();
             this.grpFlowConversion = new System.Windows.Forms.GroupBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label121 = new System.Windows.Forms.Label();
-            this.txtSupportSpan = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtMaterialTemperature = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtInsulationMaterial = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtThermalConductivity = new System.Windows.Forms.TextBox();
             this.tabMain.SuspendLayout();
             this.tabPipeDiameter.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -204,6 +211,7 @@ namespace Thermor
             this.groupBox4.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.grpFlowConversion.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // rioOperatingCondition
@@ -714,6 +722,18 @@ namespace Thermor
             this.txtCorrosionAllowance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTip1.SetToolTip(this.txtCorrosionAllowance, "mm");
             // 
+            // txtSupportSpan
+            // 
+            this.txtSupportSpan.Font = new System.Drawing.Font("宋体", 9F);
+            this.txtSupportSpan.Location = new System.Drawing.Point(76, 382);
+            this.txtSupportSpan.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtSupportSpan.Name = "txtSupportSpan";
+            this.txtSupportSpan.ReadOnly = true;
+            this.txtSupportSpan.Size = new System.Drawing.Size(96, 21);
+            this.txtSupportSpan.TabIndex = 13;
+            this.txtSupportSpan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.txtSupportSpan, "m");
+            // 
             // cbxPipeMaterial
             // 
             this.cbxPipeMaterial.ForeColor = System.Drawing.Color.Brown;
@@ -739,6 +759,15 @@ namespace Thermor
             this.label73.Size = new System.Drawing.Size(53, 12);
             this.label73.TabIndex = 12;
             this.label73.Text = "设计温度";
+            // 
+            // label121
+            // 
+            this.label121.AutoSize = true;
+            this.label121.Location = new System.Drawing.Point(7, 386);
+            this.label121.Name = "label121";
+            this.label121.Size = new System.Drawing.Size(53, 12);
+            this.label121.TabIndex = 31;
+            this.label121.Text = "管道跨距";
             // 
             // txtDesignTemperature
             // 
@@ -1694,6 +1723,7 @@ namespace Thermor
             // 
             // tabMisc
             // 
+            this.tabMisc.Controls.Add(this.groupBox5);
             this.tabMisc.Controls.Add(this.groupBox4);
             this.tabMisc.Controls.Add(this.groupBox8);
             this.tabMisc.Controls.Add(this.grpFlowConversion);
@@ -1891,26 +1921,79 @@ namespace Thermor
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ShowAlways = true;
             // 
-            // label121
+            // groupBox5
             // 
-            this.label121.AutoSize = true;
-            this.label121.Location = new System.Drawing.Point(7, 386);
-            this.label121.Name = "label121";
-            this.label121.Size = new System.Drawing.Size(53, 12);
-            this.label121.TabIndex = 31;
-            this.label121.Text = "管道跨距";
+            this.groupBox5.Controls.Add(this.label14);
+            this.groupBox5.Controls.Add(this.txtThermalConductivity);
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.txtInsulationMaterial);
+            this.groupBox5.Controls.Add(this.label12);
+            this.groupBox5.Controls.Add(this.txtMaterialTemperature);
+            this.groupBox5.Location = new System.Drawing.Point(213, 8);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(189, 113);
+            this.groupBox5.TabIndex = 3;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "导热系数";
             // 
-            // txtSupportSpan
+            // label12
             // 
-            this.txtSupportSpan.Font = new System.Drawing.Font("宋体", 9F);
-            this.txtSupportSpan.Location = new System.Drawing.Point(76, 382);
-            this.txtSupportSpan.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.txtSupportSpan.Name = "txtSupportSpan";
-            this.txtSupportSpan.ReadOnly = true;
-            this.txtSupportSpan.Size = new System.Drawing.Size(96, 21);
-            this.txtSupportSpan.TabIndex = 13;
-            this.txtSupportSpan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTip1.SetToolTip(this.txtSupportSpan, "m");
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(9, 22);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 12);
+            this.label12.TabIndex = 13;
+            this.label12.Text = "物料温度";
+            // 
+            // txtMaterialTemperature
+            // 
+            this.txtMaterialTemperature.ForeColor = System.Drawing.Color.Blue;
+            this.txtMaterialTemperature.Location = new System.Drawing.Point(81, 18);
+            this.txtMaterialTemperature.Name = "txtMaterialTemperature";
+            this.txtMaterialTemperature.Size = new System.Drawing.Size(95, 21);
+            this.txtMaterialTemperature.TabIndex = 12;
+            this.txtMaterialTemperature.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.txtMaterialTemperature, "℃");
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(9, 54);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 12);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "保温材料";
+            // 
+            // txtInsulationMaterial
+            // 
+            this.txtInsulationMaterial.ForeColor = System.Drawing.Color.Blue;
+            this.txtInsulationMaterial.Location = new System.Drawing.Point(81, 50);
+            this.txtInsulationMaterial.Name = "txtInsulationMaterial";
+            this.txtInsulationMaterial.ReadOnly = true;
+            this.txtInsulationMaterial.Size = new System.Drawing.Size(95, 21);
+            this.txtInsulationMaterial.TabIndex = 14;
+            this.txtInsulationMaterial.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(9, 86);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(53, 12);
+            this.label14.TabIndex = 17;
+            this.label14.Text = "导热系数";
+            this.toolTip1.SetToolTip(this.label14, "W/m.℃");
+            // 
+            // txtThermalConductivity
+            // 
+            this.txtThermalConductivity.ForeColor = System.Drawing.Color.Blue;
+            this.txtThermalConductivity.Location = new System.Drawing.Point(81, 82);
+            this.txtThermalConductivity.Name = "txtThermalConductivity";
+            this.txtThermalConductivity.ReadOnly = true;
+            this.txtThermalConductivity.Size = new System.Drawing.Size(95, 21);
+            this.txtThermalConductivity.TabIndex = 16;
+            this.txtThermalConductivity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.txtThermalConductivity, "W/m.℃");
             // 
             // FrmMain
             // 
@@ -1957,6 +2040,8 @@ namespace Thermor
             this.groupBox8.PerformLayout();
             this.grpFlowConversion.ResumeLayout(false);
             this.grpFlowConversion.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2118,6 +2203,13 @@ namespace Thermor
         private System.Windows.Forms.TextBox txtOutDiameter1;
         private System.Windows.Forms.TextBox txtSupportSpan;
         private System.Windows.Forms.Label label121;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtThermalConductivity;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtInsulationMaterial;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtMaterialTemperature;
     }
 }
 

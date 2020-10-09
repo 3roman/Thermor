@@ -114,6 +114,7 @@ namespace Thermor
                     case @"杂项功能":
                         ConvertFlowRate();
                         OpenHole();
+                        CalculateThermalConductivity();
                         break;
                 }
             }
@@ -440,6 +441,34 @@ namespace Thermor
             int.TryParse(txtThermalDisplacement.Text, out int thermalDisplacement);
             var holeSize = outDiameter + 2 * (insulationThickness1 + clearSpacing + thermalDisplacement);
             txtHoleSize.Text = holeSize + string.Empty;
+        }
+        #endregion
+
+        #region 导热系数
+        private void CalculateThermalConductivity()
+        {
+            double.TryParse(txtMaterialTemperature.Text, out double materialTemperature);
+            string InsulationMaterial = string.Empty;
+            double ThermalConductivity = 0;
+            double tm = (20 + materialTemperature) / 2;
+            if (materialTemperature > 0 && materialTemperature <= 250)
+            {
+                InsulationMaterial = "岩棉制品";
+                ThermalConductivity = 0.044 + 0.00018 * (tm - 70);
+            }
+            else if (materialTemperature > 250 && materialTemperature <= 400)
+            {
+                InsulationMaterial = "复合硅酸盐制品";
+                ThermalConductivity = 0.044 + 0.00015 * (tm - 70);
+            }
+            else if (materialTemperature > 400)
+            {
+                InsulationMaterial = "硅酸铝纤维制品";
+                ThermalConductivity = 0.056 + 0.0002 * (tm - 70);
+            }
+
+            txtInsulationMaterial.Text = InsulationMaterial;
+            txtThermalConductivity.Text = ThermalConductivity + string.Empty;
         }
         #endregion
         private void QueryPipeSpecification()
